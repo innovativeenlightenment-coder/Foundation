@@ -221,7 +221,27 @@ import { unstable_noStore as noStore } from "next/cache";
 // import MOCK_CONFIG from "@/utils/mock_config";
 const MOCK_CONFIG = {
   "Foundation 8th": {
-    mockTest: { questions: 180, duration: 180 },
+    mockTest: { questions: 180, duration: 240 },
+    subjectWise: {
+      Maths: { questions: 90, duration: 120 },
+      Physics: { questions:  90, duration: 120 },
+      Chemistry: { questions:  90, duration: 120 },
+      Biology: { questions:  90, duration: 120 },
+    },
+    chapterWise: { questions: 30, duration: 45 },
+  },
+
+  "Foundation 9th": {
+    mockTest: { questions: 180, duration: 240 },
+    subjectWise: {
+      Maths: { questions: 90, duration: 120 },
+      Physics: { questions:  90, duration: 120 },
+      Chemistry: { questions:  90, duration: 120 },
+      Biology: { questions:  90, duration: 120 },
+    },
+    chapterWise: { questions: 30, duration: 45 },
+  },"Foundation 10th": {
+    mockTest: { questions: 180, duration: 240 },
     subjectWise: {
       Maths: { questions: 90, duration: 120 },
       Physics: { questions:  90, duration: 120 },
@@ -238,6 +258,7 @@ type Subject = string;
 
 /** ================= MAIN ROUTE ================= **/
 export async function POST(req: Request) {
+
   noStore();
   try {
     await connectDB();

@@ -58,7 +58,21 @@ export default function ManageQuestionBank() {
   const [users, setUsers] = useState<UserData[]>([]);
  const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
   const [isLoading,setIsLoading]=useState(true)
-    
+    const [search, setSearch] = useState("");
+
+const filteredUsers = users.filter((u) => {
+  const s = search.trim().toLowerCase();
+  if (!s) return true;
+
+  return (
+    (u.username ?? "").toLowerCase().includes(s) ||
+    (u.email ?? "").toLowerCase().includes(s) ||
+    (u.name ?? "").toLowerCase().includes(s) ||
+    (u.role ?? "").toLowerCase().includes(s) ||
+    (u.isSubscribed ? "yes" : "no").includes(s) ||
+    (u.courses ?? []).join(", ").toLowerCase().includes(s)
+  );
+});
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -150,7 +164,7 @@ const handleUserSubmit = async (formData: Partial<UserData>) => {
 
 
 const handleDownloadExcel = () => {
-  const exportData = users.map((u) => ({
+  const exportData = filteredUsers.map((u) => ({
     username: u.username?? "",
     email: u.email ?? "",
     isSubscribed: u.isSubscribed ?? "",
@@ -180,10 +194,10 @@ const handleDownloadExcel = () => {
 
 
 useEffect(()=>{
-if(users){
+if(filteredUsers){
   setIsLoading(false)
 }
-},[users])
+},[filteredUsers])
 
 
 if(isLoading){
@@ -198,8 +212,17 @@ if(isLoading){
         <Typography variant="h4" mb={4}>
           Users
         </Typography>
-      <Grid container justifyContent={"space-between"}> 
-        <Grid item>
+      {/* <Grid container justifyContent={"space-between"}> 
+        <Grid item sm={8}>
+          <TextField
+  fullWidth
+  size="small"
+  placeholder="Search"
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  sx={{ maxWidth:240,mr:2, }}
+/>
+
 <Button
   variant="contained"
   color="primary"
@@ -209,8 +232,7 @@ if(isLoading){
   Export Users
 </Button>
 
-{/* </Grid>   */}
-{/* <Grid item> */}
+
 <Button
   variant="contained"
   color="primary"
@@ -256,7 +278,104 @@ if(isLoading){
   </Button>
 )}
 </Grid>
+</Grid> */}
+<Grid
+  container
+  spacing={2}
+  alignItems="center"
+  justifyContent="space-between"
+>
+  {/* Left side: Search + buttons */}
+  <Grid item xs={12} md={8}>
+    <Grid
+      container
+      spacing={2}
+      alignItems="center"
+      sx={{ flexWrap: "wrap" }}
+    >
+      {/* Search */}
+      <Grid item xs={12} sm={6} md={4}>
+        <TextField
+          fullWidth
+          size="small"
+          placeholder="Search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </Grid>
+
+      {/* Export */}
+      <Grid item xs={12} sm="auto">
+        <Button
+          fullWidth
+          variant="contained"
+          color="primary"
+          onClick={handleDownloadExcel}
+          sx={{ height: 40, minWidth: 140 }}
+        >
+          Export Users
+        </Button>
+      </Grid>
+
+      {/* Add */}
+      <Grid item xs={12} sm="auto">
+        <Button
+          fullWidth
+          variant="contained"
+          color="primary"
+          onClick={openAddUserModal}
+          sx={{ height: 40, minWidth: 160 }}
+        >
+          Add New User
+        </Button>
+      </Grid>
+    </Grid>
+  </Grid>
+
+  {/* Right side: Delete Selected */}
+  <Grid item xs={12} md={4}>
+    <Grid container justifyContent={{ xs: "stretch", md: "flex-end" }}>
+      {selectedUsers.length > 0 && (
+        <Button
+          fullWidth
+          variant="contained"
+          color="error"
+          sx={{ height: 40, minWidth: { md: 240 } }}
+          onClick={async () => {
+            const confirmDelete = confirm(
+              "Are you sure you want to delete selected Users?"
+            );
+            if (!confirmDelete) return;
+
+            try {
+              const res = await fetch("/api/Bulk-Delete-Users", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ids: selectedUsers }),
+              });
+
+              if (res.ok) {
+                alert("Selected Users deleted successfully");
+                setUsers((prev) =>
+                  prev.filter((u) => !selectedUsers.includes(u._id))
+                );
+                setSelectedUsers([]);
+              } else {
+                alert("Failed to delete selected Users");
+              }
+            } catch (error) {
+              console.error(error);
+              alert("Something went wrong");
+            }
+          }}
+        >
+          Delete Selected ({selectedUsers.length})
+        </Button>
+      )}
+    </Grid>
+  </Grid>
 </Grid>
+
       </Box>
 
       {/* ✅ Table Scroll Wrapper */}
@@ -345,14 +464,25 @@ if(isLoading){
   >
     <input
       type="checkbox"
-      checked={users.length > 0 && selectedUsers.length === users.length}
-      onChange={(e) => {
-        if (e.target.checked) {
-          setSelectedUsers(users.map((q) => q._id));
-        } else {
-          setSelectedUsers([]);
-        }
-      }}
+      // checked={filteredUsers.length > 0 && selectedUsers.length === users.length}
+      // onChange={(e) => {
+      //   if (e.target.checked) {
+      //     setSelectedUsers(filteredUsers.map((q) => q._id));
+      //   } else {
+      //     setSelectedUsers([]);
+      //   }
+      // }}
+       checked={
+    filteredUsers.length > 0 &&
+    selectedUsers.length === filteredUsers.length
+  }
+  onChange={(e) => {
+    if (e.target.checked) {
+      setSelectedUsers(filteredUsers.map((u) => u._id));
+    } else {
+      setSelectedUsers([]);
+    }
+  }}
     />
   </TableCell>
   {["Username", "Email", "Is Subscribed", "Name", "Role","Actions"].map((header) => (
@@ -378,7 +508,7 @@ if(isLoading){
     </TableHead>
 
     <TableBody>
-      {users.map((u, index) => (
+      {filteredUsers.map((u, index) => (
         <TableRow
           key={u._id}
           hover

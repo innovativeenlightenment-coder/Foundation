@@ -65,6 +65,7 @@ export default function ManageQuestionBank() {
   noStore()
 
   const [questions, setQuestions] = useState<QuestionData[]>([]);
+const [search, setSearch] = useState("");
 
   const [level, setLevel] = useState<string>("");
   const [course, setCourse] = useState<string>("");
@@ -121,16 +122,37 @@ const [user,setUser]=useState({_id:""})
     fetchQuestions();
   }, []);
 
- const filteredQuestions = questions.filter((q) => {
+//  const filteredQuestions = questions.filter((q) => {
 
+//   const subjectMatch = subject ? q.subject?.toLowerCase().includes(subject.toLowerCase()) : true;
+//   const chapterMatch = chapter ? q.chapter?.toLowerCase().includes(chapter.toLowerCase()) : true;
+//   const levelMatch = level ? q.level?.toLowerCase().includes(level.toLowerCase()) : true;
+// const courseMatch = course ? q.course?.toLowerCase().includes(course.toLowerCase()) : true;
+
+//   return subjectMatch && chapterMatch && levelMatch&&courseMatch;
+// });
+
+
+const filteredQuestions = questions.filter((q) => {
   const subjectMatch = subject ? q.subject?.toLowerCase().includes(subject.toLowerCase()) : true;
   const chapterMatch = chapter ? q.chapter?.toLowerCase().includes(chapter.toLowerCase()) : true;
   const levelMatch = level ? q.level?.toLowerCase().includes(level.toLowerCase()) : true;
-const courseMatch = course ? q.course?.toLowerCase().includes(course.toLowerCase()) : true;
+  const courseMatch = course ? q.course?.toLowerCase().includes(course.toLowerCase()) : true;
 
-  return subjectMatch && chapterMatch && levelMatch&&courseMatch;
+  const s = search.trim().toLowerCase();
+  const searchMatch = s
+    ? (
+        (q.question?.text ?? "").toLowerCase().includes(s) ||
+        (q.hint?.text ?? "").toLowerCase().includes(s) ||
+        (q.subject ?? "").toLowerCase().includes(s) ||
+        (q.chapter ?? "").toLowerCase().includes(s) ||
+        (q.course ?? "").toLowerCase().includes(s) ||
+        (q.options ?? []).some((o) => (o.text ?? "").toLowerCase().includes(s))
+      )
+    : true;
+
+  return subjectMatch && chapterMatch && levelMatch && courseMatch && searchMatch;
 });
-
 
 const handleLevelChange = (newLevel: string) => {
   setLevel(newLevel);
@@ -299,7 +321,7 @@ if(isLoading){
         <Typography variant="h4" mb={4}>
           Manage Question Bank
         </Typography>
-        <Grid container spacing={2}>
+        {/* <Grid container spacing={2}>
         
           <Grid item xs={12} sm={12}>
             <QuestionTypeSelector
@@ -311,6 +333,15 @@ if(isLoading){
        title={null}
               isSubmitted={isSubmitted}
               />
+              <TextField
+  fullWidth
+  size="small"
+  label="Search (question / options / hint)"
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  sx={{ mt: 2, maxWidth: 520 }}
+/>
+
             <Button
               variant="outlined"
               color="secondary"
@@ -319,6 +350,8 @@ if(isLoading){
                 setSubject("");
                 setChapter("");
                 setIsSubmitted(true);
+                setSearch("");
+
               }}
               sx={{
                 marginTop: "20px",
@@ -415,7 +448,151 @@ if(isLoading){
 
             </Grid>
             
-        </Grid> 
+        </Grid>  */}
+        <Grid container spacing={2}>
+  <Grid item xs={12}>
+    {/* 1) Filters selector */}
+    <QuestionTypeSelector
+      onLevelChange={handleLevelChange}
+      onCourseChange={handleCourseChange}
+      onSubjectChange={handleSubjectChange}
+      onChapterChange={handleChapterChange}
+      title={null}
+      isSubmitted={isSubmitted}
+    />
+
+    {/* 2) Search + Buttons responsive row */}
+    <Grid
+      container
+      spacing={2}
+      alignItems="center"
+      sx={{ mt: 1 }}
+    >
+      {/* Search */}
+      <Grid item xs={12} md={5}>
+        <TextField
+          fullWidth
+          size="small"
+          placeholder="Search (question / options / hint)"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </Grid>
+
+      {/* Actions */}
+      <Grid item xs={12} md={7}>
+        <Grid
+          container
+          spacing={2}
+          justifyContent={{ xs: "stretch", md: "flex-end" }}
+          alignItems="center"
+        >
+          {/* Clear */}
+          <Grid item xs={12} sm="auto">
+            <Button
+              fullWidth
+              variant="outlined"
+              color="secondary"
+              onClick={() => {
+                setLevel("");
+                setSubject("");
+                setChapter("");
+                setIsSubmitted(true);
+                setSearch("");
+              }}
+              sx={{
+                height: 40,
+                borderColor: "#1976d2",
+                color: "#1976d2",
+                "&:hover": {
+                  backgroundColor: "#e3f2fd",
+                  borderColor: "#1565c0",
+                },
+              }}
+              disabled={!course && !subject && !chapter && !search}
+              startIcon={<Cancel sx={{ color: "#d32f2f" }} />}
+            >
+              Clear
+            </Button>
+          </Grid>
+
+          {/* Import */}
+          <Grid item xs={12} sm="auto">
+            <Button
+              fullWidth
+              variant="contained"
+              component="label"
+              sx={{ height: 40, minWidth: 160 }}
+            >
+              Import
+              <input
+                type="file"
+                accept=".xlsx, .xls"
+                hidden
+                onChange={handleExcelUpload}
+              />
+            </Button>
+          </Grid>
+
+          {/* Export */}
+          <Grid item xs={12} sm="auto">
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={handleDownloadExcel}
+              sx={{ height: 40, minWidth: 160 }}
+            >
+              Export
+            </Button>
+          </Grid>
+
+          {/* Delete Selected */}
+          {selectedQuestions.length > 0 && (
+            <Grid item xs={12} sm="auto">
+              <Button
+                fullWidth
+                variant="contained"
+                color="error"
+                sx={{ height: 40, minWidth: 220 }}
+                onClick={async () => {
+                  const confirmDelete = confirm(
+                    "Are you sure you want to delete selected questions?"
+                  );
+                  if (!confirmDelete) return;
+
+                  try {
+                    const res = await fetch("/api/Bulk-Delete-Questions", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ ids: selectedQuestions }),
+                    });
+
+                    if (res.ok) {
+                      alert("Selected questions deleted successfully");
+                      setQuestions((prev) =>
+                        prev.filter((q) => !selectedQuestions.includes(q._id))
+                      );
+                      setSelectedQuestions([]);
+                    } else {
+                      alert("Failed to delete selected questions");
+                    }
+                  } catch (error) {
+                    console.error(error);
+                    alert("Something went wrong");
+                  }
+                }}
+              >
+                Delete Selected ({selectedQuestions.length})
+              </Button>
+            </Grid>
+          )}
+        </Grid>
+      </Grid>
+    </Grid>
+  </Grid>
+</Grid>
+
       </Box>
 
       {/* ✅ Table Scroll Wrapper */}

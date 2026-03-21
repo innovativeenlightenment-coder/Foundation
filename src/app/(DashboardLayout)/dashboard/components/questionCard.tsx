@@ -3,6 +3,8 @@ import { Question } from "@/types/questionType";
 import { Box, Typography, Radio, FormControlLabel } from "@mui/material";
 import Image from "next/image";
 
+import RenderMath from "@/lib/renderMaths";
+
 
 interface Props {
   index: number;
@@ -31,7 +33,8 @@ export default function QuestionCard({index, data, selectedOption, onSelect }: P
 {/* Question */}
 {data.questionType === "text" ? (
   <Typography variant="h6" mb={2}>
-    {data.question.text}
+    {/* {data.question.text} */}
+       <RenderMath text={data.question.text} />
   </Typography>
 ) : (
   <Box mb={2} alignItems={"center"}>
@@ -79,8 +82,12 @@ export default function QuestionCard({index, data, selectedOption, onSelect }: P
       <>
       <Typography>
         {["A)", "B)", "C)", "D)"].some(prefix => (option.text ?? "").trim().startsWith(prefix))
-          ? (option.text ?? "")
-          : `${["A)", "B)", "C)", "D)"][idx]} ${option.text ?? ""}`}
+          // ? (option.text ?? "")
+          ?(
+              <RenderMath text={option.text ?? ""} />)
+          
+          // : `${["A)", "B)", "C)", "D)"][idx]} ${option.text ?? ""}`}
+          : (<RenderMath text={`${["A)", "B)", "C)", "D)"][idx]} ${option.text ?? ""}`} />)}
       </Typography>
       </>
     ) : (

@@ -244,6 +244,7 @@ import { useRouter } from "next/navigation";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+
  const theme = useTheme();
  const isDark = theme.palette.mode === "dark";
   const router = useRouter()

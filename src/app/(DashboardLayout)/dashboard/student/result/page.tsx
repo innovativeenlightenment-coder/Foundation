@@ -43,11 +43,17 @@ import {
 import QuizIcon from '@mui/icons-material/Quiz';
 import { TrophyIcon } from "lucide-react";
 
+
+
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 // @ts-ignore
 import html2pdf from "html2pdf.js";
 import React from "react";
+
+
+import RenderMath from "@/lib/renderMaths";
+
 
 export default function ResultPage() {
   const searchParams = useSearchParams();
@@ -703,7 +709,8 @@ console.log("Selected answer:", selected?.selected, "Correct answer:", q.answer,
                   <Box sx={{ mb: 2 }}>
                     {q.questionType === "text" ? (
                       <Typography variant="body1" sx={{ fontSize: "12px", fontWeight: 500, mb: 2 }}>
-                        {q.question.text}
+                        {/* {q.question.text} */}
+                              <RenderMath text={q.question.text} />
                       </Typography>
                     ) : (
                       <Box component="img"
@@ -732,7 +739,8 @@ console.log("Selected answer:", selected?.selected, "Correct answer:", q.answer,
                         </span>
                         {q.optionType === "text" ? (
                           <Typography variant="body2" sx={{ fontSize: "12px" }}>
-                            {option.text}
+                            {/* {option.text} */}
+                              <RenderMath text={option.text} />
                           </Typography>
                         ) : (
                           <Box component="img"
@@ -750,7 +758,8 @@ console.log("Selected answer:", selected?.selected, "Correct answer:", q.answer,
                 <TableCell sx={{ border: "1px solid #e0e0e0", py: 2, px: 2, maxWidth: "240px", minWidth:"180px" }}>
                   {q.hintType === "text" ? (
                     <Typography variant="body2" sx={{ fontSize: "12px", fontStyle: 'italic' }}>
-                      {q.hint.text || "—"}
+                      {/* {q.hint.text || "—"} */}
+                        <RenderMath text={q.hint.text || "—"} />
                     </Typography>
                   ) : (
                     <Box component="img"

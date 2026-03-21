@@ -69,9 +69,9 @@ import Image from "next/image";
 // import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import {useRouter} from "next/navigation";
 import { ArrowForward } from "@mui/icons-material";
+import { getCurrentUser } from "@/lib/getCurrentUser";
 
 export default function Navbar() {
-  
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const theme = useTheme();
  const isDark = theme.palette.mode === "dark";
@@ -97,8 +97,7 @@ export default function Navbar() {
     useEffect(() => {
       async function fetchUser() {
         try {
-          const res = await fetch("/api/auth/Get-Current-User", { method: "GET" });
-          const data = await res.json();
+       const data = await getCurrentUser();
   
           if (data?.success) {
               setIsLoggedIn(true)

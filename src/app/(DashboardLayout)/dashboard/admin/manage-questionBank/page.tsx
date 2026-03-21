@@ -59,6 +59,8 @@ export interface QuestionData {
 }
 
 
+import RenderMath from "@/lib/renderMaths";
+
 export default function ManageQuestionBank() {
   // Use the Question type for the state
 
@@ -770,7 +772,11 @@ if(isLoading){
                 style={{ maxWidth: 195, height: "auto", borderRadius: 4 }}
               />
             ) : (
-              <p style={{ wordBreak: "break-word" }}>{q.question.text}</p>
+              <p style={{ wordBreak: "break-word" }}>
+                {/* {q.question.text} */}
+                 <RenderMath text={q.question.text} />
+             
+                </p>
             )}
           </TableCell>
           <TableCell >
@@ -798,7 +804,9 @@ if(isLoading){
                     />
                   ) : (
                     <p style={{ wordBreak: "break-word" }}>
-                      {`${String.fromCharCode(65 + idx)}. ${opt.text}`}
+                      {/* {`${String.fromCharCode(65 + idx)}. ${opt.text}`} */}
+                    
+                     <RenderMath text={`${String.fromCharCode(65 + idx)}. ${opt.text}`} />
                     </p>
                   )}
                 </li>
@@ -814,7 +822,13 @@ if(isLoading){
                 style={{ maxWidth: 195, height: "auto", borderRadius: 4 }}
               />
             ) : (
-              <p style={{ wordBreak: "break-word" }}>{q.hint?.text||"-"}</p>
+              <p style={{ wordBreak: "break-word" }}>
+                {/* {q.hint?.text||"-"} */}
+
+                 <RenderMath text={q.hint?.text||"-"} />
+                  
+
+                </p>
             )}
           </TableCell>
            <TableCell >{q.course}</TableCell>

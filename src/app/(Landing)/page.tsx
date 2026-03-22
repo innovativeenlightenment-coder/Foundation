@@ -572,10 +572,10 @@ export default function Index() {
                 Contact
               </a>
               <div className="flex gap-2 pt-4">
-                <button className="flex-1 px-4 py-2 text-sm font-semibold text-purple-600 border border-purple-600 rounded-lg hover:bg-purple-50 transition-colors">
+                <button onClick={()=>router.push("/login")} className="flex-1 px-4 py-2 text-sm font-semibold text-purple-600 border border-purple-600 rounded-lg hover:bg-purple-50 transition-colors">
                   Sign In
                 </button>
-                <button className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg text-sm font-semibold hover:bg-purple-700 transition-colors">
+                <button onClick={()=>router.push("/signup")} className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg text-sm font-semibold hover:bg-purple-700 transition-colors">
                   Sign Up
                 </button>
               </div>
@@ -673,27 +673,24 @@ export default function Index() {
         </div>
       </section>
 
-      {/* About Us Section */}
+      {/* About Us Section
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Left Visual */}
+            Left Visual
             <div className="order-2 md:order-1 md:max-w-md max-w-full">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-purple-50 rounded-3xl blur-2xl opacity-50"></div>
                 <div className="relative bg-gradient-to-br from-white to-gray-50 rounded-3xl border border-purple-200 p-2 shadow-2xl overflow-hidden">
-                  {/* <div className="absolute top-0 right-0 w-40 h-40 bg-purple-100 rounded-full -mr-20 -mt-20 opacity-50"></div> */}
+                  
                   <div className="aspect-square flex items-center justify-center rounded-2xl relative bg-black ">
-                    {/* <div className="aspect-square bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center text-8xl">
-                      💡
-                    </div> */}
+                    
                     <img src="/images/logos/logo-innovative-dark.png" className=" text-8xl " />
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Content */}
             <div className="order-1 md:order-2">
               <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-900">About Us</h2>
               <p className="text-lg text-slate-600 mb-4 leading-relaxed">
@@ -716,13 +713,11 @@ export default function Index() {
                   <span className="text-slate-700"><strong>Holistic Growth:</strong> Building competitive mindset and life skills</span>
                 </li>
               </ul>
-              {/* <p className="text-lg text-slate-600 leading-relaxed">
-                Today, we're helping hundreds of students excel in board exams, Olympiads, and competitive exams with our multi-format learning approach.
-              </p> */}
+          
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CEO/Founder Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">

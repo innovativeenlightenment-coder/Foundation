@@ -735,7 +735,9 @@ export default function Index() {
                 <div className="border-t border-gray-200 my-4"></div>
                   <p className="text-slate-900 text-xl bold italic mb-8">
                   {/* "My mission is to prove that with the right approach, every student can excel. It's not about how smart you are, it's about how you learn." */}
-                  &#34;My mission is to help each students imporve, grow, and excel not only in exams but in life...&rdquo;
+                  &#34;My mission is to help students improve, grow and excel not only in exams but also in their life!&rdquo;
+                 
+
                 </p>
                 </div>
               </div>
@@ -751,14 +753,18 @@ export default function Index() {
                 <div className="border-t border-gray-200 my-4"></div> */}
    <p className="text-purple-600 font-semibold text-2xl mb-2">Shoukatali Mujawar</p>
                 <h3 className="text-lg font-bold text-slate-900 mb-3">Founder & CEO</h3>
-                <p className="text-md text-slate-500 mb-4">Education | 20+ Years Experience | Professional Trainer | Service Provider to NAAC & many more colleges</p>
+                <p className="text-md text-slate-500 mb-4">Academic Education | Computer Professional Trainer | NAAC consultant to many more Colleges and Educational Institutions</p>
 
                   {/* <div className="aspect-square bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center text-9xl">
                     👨‍💼
                   </div> */}
                     <div className="border-t border-gray-200 my-4"></div>
                 <p className="text-slate-700 text-sm mb-4 leading-relaxed">
-                  With over 20 years of experience in education and teachnology, our founder has provided software and hardware services to 25+ colleges, school, and hotel. Also he has been working in education field from past 20 years and is honour to conduct competitive exams like AMP Scholarship, and many more. And with the vision to transform how students learn, and to help each student grow and achieve concept clarity, academic excellence, confidence to participate in competitive exam, he has started Innovative Academy. Here studdents get guidance, confidence, clarity. Our teaching method is interesting, and focus on each students growth, we also help students study easily by making different methods to study. With all this we aso focus on life skills like communication, confidence, career guidance, and many more. And our Online App Platform helps each student to practice, analyse, improve and achieve.
+20+ Years Experience in Technical and Academic Education | Computer Professional Trainer | NAAC consultant to many more Colleges and Educational Institutions
+Our founder has 20+ years of experience in the field of education and technology and providing software and hardware services to 25+ colleges, schools and hotels. He has also honour to conduct competitive exams like AMP Scholarship and many more. He has started Innovative Academy with the vision to build learning habits amongst students and to help students grow and achieve concept clarity, academic excellence and confidence to participate in competitive exam. Our teaching method is interesting and focuses on students growth. We also help students study easily by imparting various study methods. With all this, we also focus on life skills like communication, confidence, career guidance, and many more. Our Online App Platform helps students to practice, analyze, improve and achieve success in their academic development.
+
+{/* 
+                  With over 20 years of experience in education and teachnology, our founder has provided software and hardware services to 25+ colleges, school, and hotel. Also he has been working in education field from past 20 years and is honour to conduct competitive exams like AMP Scholarship, and many more. And with the vision to transform how students learn, and to help each student grow and achieve concept clarity, academic excellence, confidence to participate in competitive exam, he has started Innovative Academy. Here studdents get guidance, confidence, clarity. Our teaching method is interesting, and focus on each students growth, we also help students study easily by making different methods to study. With all this we aso focus on life skills like communication, confidence, career guidance, and many more. And our Online App Platform helps each student to practice, analyse, improve and achieve. */}
                 </p>
 
                 <div className="space-y-3 mb-4">
@@ -772,7 +778,11 @@ export default function Index() {
                   <div className="flex items-start gap-3">
                     <Check size={20} className="text-purple-600 flex-shrink-0 mt-1" />
                     <div>
-                      <p className="font-semibold text-slate-900">Software and hardware services from past 20+ years</p>
+                      <p className="font-semibold text-slate-900">
+                        {/* Software and hardware services from past 20+ years */}
+                        Imparting Computer Software and hardware services since last 20+ years!
+
+                        </p>
                       {/* <p className="text-sm text-slate-600">Mentored many students in thier career</p>
                       <p className="text-sm text-slate-600">Conducted many competitive exams</p> */}
                     </div>
@@ -780,7 +790,14 @@ export default function Index() {
                   <div className="flex items-start gap-3">
                     <Check size={20} className="text-purple-600 flex-shrink-0 mt-1" />
                     <div>
-                      <p className="font-semibold text-slate-900">Mentored many students in thier career</p>
+                      <p className="font-semibold text-slate-900">
+                        {/* Mentored many students in thier career */}
+                        Worked as NAAC consultant with 5+ Colleges and their Peer Team!
+
+                        </p>
+                        <p className="font-semibold text-slate-900">
+                      Mentored many students in their career!
+                      </p>
                       {/* <p className="text-sm text-slate-600">Prepared national-level achievers</p> */}
                     </div>
                   </div>

@@ -236,7 +236,7 @@ const reviveReviews = [
  <a href="#home" >
                 
              
-  <img src="/images/logos/innovative-academy.png" className='w-70'/>
+  <img src="/images/logos/innovative-academy.png" className='w-60'/>
    </a>
             </div>
             {/* Desktop Menu */}

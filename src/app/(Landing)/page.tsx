@@ -23,12 +23,12 @@ const managementMembers = [
     qualification: "Managing Director",
     image: "/images/team/adbulkareem.jpg",
   },
-   {
-    name: "Akhtar Sir",
-    designation: "Administrator",
-    qualification: "Parent and Student Relations",
-    image: "/images/team/akhtar.jpg",
-  },
+  //  {
+  //   name: "Akhtar Sir",
+  //   designation: "Administrator",
+  //   qualification: "Parent and Student Relations",
+  //   image: "/images/team/akhtar.jpg",
+  // },
 ];
 
 const facultyMembers = [

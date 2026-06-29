@@ -439,7 +439,7 @@ const reviveReviews = [
               <img
                 src="/images/logos/innovative-academy-dark.png"
                 alt="Innovative Academy"
-                className="w-64 object-contain transition-transform duration-500 hover:scale-105"
+                className="w-60 object-contain transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
@@ -1431,7 +1431,7 @@ Our founder has 20+ years of experience in the field of education and technology
             <div>
               <h3 className="text-lg font-bold mb-4 bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
                 
-  <img src="/images/logos/innovative-academy-dark.png" className='w-70'/>
+  <img src="/images/logos/innovative-academy-dark.png" className='w-60'/>
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Building Board Toppers, Olympiad achievers, and Competitive Champions through deep conceptual clarity and curiosity-driven learning.

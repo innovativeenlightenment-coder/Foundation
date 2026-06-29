@@ -728,7 +728,7 @@ Our founder has 20+ years of experience in the field of education and technology
       </section>
 
 
-{/* Under GUidance */}
+{/* Under Guidance */}
 <UnderGuidance mentors={mentors} />
 
 <section id="team" className="bg-white py-20 lg:py-24">

@@ -82,9 +82,9 @@ const UnderGuidance = ({ mentors }) => {
               {/* Bottom Quote */}
               <div className="mt-8 rounded-2xl border border-white/10 bg-gradient-to-r from-blue-500/10 to-violet-500/10 p-5">
                 <p className="italic leading-7 text-blue-100">
-                  "Their invaluable guidance and decades of educational
+                  &#34;Their invaluable guidance and decades of educational
                   excellence continue to shape the vision, values, and academic
-                  standards of Innovative Academy."
+                  standards of Innovative Academy.&#34;
                 </p>
               </div>
             </div>

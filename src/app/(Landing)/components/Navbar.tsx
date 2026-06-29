@@ -175,8 +175,8 @@ const router = useRouter();
               </Typography> */}
                 <Box sx={{width:"100%",display:"flex",justifyContent:"center",alignItems:"center",}}>
                   <Image src={isDark
-      ? "/images/logos/logo-innovative-dark.png"
-      : "/images/logos/logo-innovative.png"} alt="Logo" width={200} height={100} style={{maxWidth:"250px",height:"auto"}}  />
+      ? "/images/logos/innovative-academy-dark.png"
+      : "/images/logos/innovative-academy.png"} alt="Logo" width={200} height={100} style={{maxWidth:"250px",height:"auto"}}  />
                   </Box> 
             </Box>
           </Link>

@@ -64,7 +64,7 @@
 //                 <b><span>&nbsp;&nbsp;&nbsp;</span>  Powered By</b>
 //                 <br />
 //                 <Link href={"https://myonlinehubs.com"}  >
-//                   <img src="./images/logos/logo-innovative-dark.png" style={{ maxWidth: "200px", marginTop: "10px" }} />
+//                   <img src="./images/logos/innovative-academy-dark.png" style={{ maxWidth: "200px", marginTop: "10px" }} />
 //                 </Link>
 //               </Typography>
 //             </Box>
@@ -291,8 +291,8 @@ export default function Footer() {
                 <br />
                 <Link href={"https://myonlinehubs.com"}  >
                   <img src={isDark
-      ? "/images/logos/logo-innovative-dark.png"
-      : "/images/logos/logo-innovative.png"} style={{ maxWidth: "200px", marginTop: "10px" }} />
+      ? "/images/logos/innovative-academy-dark.png"
+      : "/images/logos/innovative-academy.png"} style={{ maxWidth: "200px", marginTop: "10px" }} />
                 </Link>
               </Typography>
             </Box>

@@ -4,7 +4,7 @@ import TeamMemberCard from "./TeamMemberCard";
 const TeamSliderSection = ({
   title,
   subtitle,
-  members = [],
+  members,
   direction = "left",
   speed = 40,
 }) => {

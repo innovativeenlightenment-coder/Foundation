@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Check, ChevronLeft, ChevronRight, Mail, Phone, MapPin, Play, Star } from 'lucide-react';
 import { ArrowRight } from "lucide-react";
 import "./landing.css"
+
 import TeamSliderSection from "./TeamSliderSection";
+import UnderGuidance from "./UnderGuidance";
 import { useRouter } from 'next/navigation';
 import ReviveSlider from "./ReviveSlider";
 
@@ -61,6 +63,43 @@ const facultyMembers = [
     image: "/images/team/simmy.jpg",
   },
 ];
+
+const mentors = [
+  {
+    image: "/images/team/mohammadali.jpg",
+
+    name: "Prof. Mahamadali Mujawar",
+
+    qualification: "M.Sc. Physics, B.Ed.",
+
+    designation: "Ex-HOD, Department of Physics",
+
+    organization: "Dr. Bapuji Salunkhe Jr. College, Miraj",
+
+    experience: "30+ Years of Teaching Experience",
+
+    story:
+      "With more than 30 years of rich academic experience, Prof. Mahamadali Mujawar has made valuable contributions to the field of education. As the former Head of the Department of Physics at Dr. Bapuji Salunkhe Jr. College, Miraj, he played a key role in strengthening academic excellence. He also introduced and guided special CET coaching initiatives, helping countless students build a strong conceptual foundation in Physics and competitive examinations."
+  },
+
+  {
+    image: "/images/team/maner.jpg",
+
+    name: "Dr. Shahjahan Maner",
+
+    qualification: "Academic Leader & Educationist",
+
+    designation: "Ex-Principal",
+
+    organization: "Shri Swami Vivekanand Shikshan Sanstha, Kolhapur",
+
+    experience: "30+ Years of Academic Experience",
+
+    story:
+      "Dr. Shahjahan Maner has devoted more than three decades to academic leadership and quality education. As the former Principal of Shri Swami Vivekanand Shikshan Sanstha, Kolhapur, and a former faculty member at Dr. Bapuji Salunkhe Jr. College, Miraj, he has contributed significantly to student development, institutional growth, and academic excellence. His experience and guidance continue to inspire our vision of delivering meaningful education."
+  },
+];
+
 
 export default function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -197,7 +236,7 @@ const reviveReviews = [
  <a href="#home" >
                 
              
-  <img src="/images/logos/logo.png" className='w-70'/>
+  <img src="/images/logos/innovative-academy.png" className='w-70'/>
    </a>
             </div>
             {/* Desktop Menu */}
@@ -398,7 +437,7 @@ const reviveReviews = [
           <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-white p-4 shadow-[0_20px_50px_rgba(15,23,42,.10)]">
             <div className="aspect-square rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center">
               <img
-                src="/images/logos/logo-innovative-dark.png"
+                src="/images/logos/innovative-academy-dark.png"
                 alt="Innovative Academy"
                 className="w-64 object-contain transition-transform duration-500 hover:scale-105"
               />
@@ -621,6 +660,11 @@ p-8">
                 <p className="text-sm text-slate-500 mb-4">Education | 20+ Years Experience | Professional Trainer | Service Provider to NAAC & many more colleges</p>
 
                 <div className="border-t border-gray-200 my-4"></div> */}
+                <div className="flex flex-wrap  gap-4">
+                <div className="flex md:hidden text-center w-full justify-center">
+                  <img src="/images/abbu2.png" className="text-center mx-auto h-28 w-28 rounded-full border-2 border-white ring-1 ring-purple-100 shadow-md object-cover" />
+                </div>
+                <div>
    <span className="inline-flex rounded-full bg-purple-100 px-4 py-1 text-xs font-semibold text-purple-700">
 Founder & CEO
 </span>
@@ -632,6 +676,7 @@ Shoukatali Mujawar
 <p className="mt-3 text-slate-500">
 20+ Years in Academic & Technical Education
 </p>
+</div></div>
                 <p className="mt-8 text-slate-600">Academic Education | Computer Professional Trainer | NAAC consultant to many more Colleges and Educational Institutions</p>
 
                   {/* <div className="aspect-square bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center text-9xl">
@@ -681,6 +726,10 @@ Our founder has 20+ years of experience in the field of education and technology
           </div>
         </div>
       </section>
+
+
+{/* Under GUidance */}
+<UnderGuidance mentors={mentors} />
 
 <section id="team" className="bg-white py-20 lg:py-24">
 <div className="space-y-16 lg:space-y-20">
@@ -1382,7 +1431,7 @@ Our founder has 20+ years of experience in the field of education and technology
             <div>
               <h3 className="text-lg font-bold mb-4 bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
                 
-  <img src="/images/logos/logo-innovative-dark.png" className='w-70'/>
+  <img src="/images/logos/innovative-academy-dark.png" className='w-70'/>
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Building Board Toppers, Olympiad achievers, and Competitive Champions through deep conceptual clarity and curiosity-driven learning.

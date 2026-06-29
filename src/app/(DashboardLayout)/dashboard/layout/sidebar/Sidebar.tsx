@@ -83,7 +83,7 @@
 //               themeSecondaryColor="#49beff"
 //               showProfile={false}
 //             >
-//                           <Box sx={{  width:"100%",display:"flex",justifyContent:"center",alignItems:"center", padding:"10px 0px 15px 0px"}}><Image src="/images/logos/logo-innovative.png" alt="Logo" width={200} height={100} style={{maxWidth:"260px",marginTop:"10px",height:"auto"}}  /></Box> 
+//                           <Box sx={{  width:"100%",display:"flex",justifyContent:"center",alignItems:"center", padding:"10px 0px 15px 0px"}}><Image src="/images/logos/innovative-academy.png" alt="Logo" width={200} height={100} style={{maxWidth:"260px",marginTop:"10px",height:"auto"}}  /></Box> 
 //               <Box>
                 
 //                 <SidebarItems toggleMobileSidebar={()=>onSidebarClose}  />
@@ -123,7 +123,7 @@
 //           themeSecondaryColor="#49beff"
 //           showProfile={false}
 //         >
-//          <Box sx={{width:"100%",display:"flex",justifyContent:"center",alignItems:"center",}}><Image src="/images/logos/logo-innovative.png" alt="Logo" width={200} height={100} style={{maxWidth:"260px",marginTop:"10px",paddingBottom:"10px",height:"auto"}}  /></Box> 
+//          <Box sx={{width:"100%",display:"flex",justifyContent:"center",alignItems:"center",}}><Image src="/images/logos/innovative-academy.png" alt="Logo" width={200} height={100} style={{maxWidth:"260px",marginTop:"10px",paddingBottom:"10px",height:"auto"}}  /></Box> 
            
 //           <SidebarItems toggleMobileSidebar={()=>onSidebarClose}  />
 
@@ -164,8 +164,8 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }: ItemTyp
       <Box sx={{ py: 2, display: "flex", justifyContent: "center" }}>
         <Image
           src={isDark
-      ? "/images/logos/logo-innovative-dark.png"
-      : "/images/logos/logo-innovative.png"}
+      ? "/images/logos/innovative-academy-dark.png"
+      : "/images/logos/innovative-academy.png"}
           alt="Logo"
           width={200}
           height={100}
